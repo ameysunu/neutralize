@@ -322,6 +322,7 @@ void _submitDialog(BuildContext context) {
           content: RaisedButton(
             color: Colors.black,
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   "Submit",

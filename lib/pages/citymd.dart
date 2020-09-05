@@ -174,7 +174,7 @@ class _CityMDState extends State<CityMD> {
 
 void createRecord() async {
   var firebaseUser = await FirebaseAuth.instance.currentUser();
-  firestoreInstance.collection("users").document('CityMD').setData({
+  firestoreInstance.collection("users").document('Alisha').updateData({
     "name": nameController.text,
     "age": ageController.text,
     "date": dateController.text,

@@ -174,7 +174,7 @@ class _AdvantageCareState extends State<AdvantageCare> {
 
 void createRecord() async {
   var firebaseUser = await FirebaseAuth.instance.currentUser();
-  firestoreInstance.collection("users").document('AdvantageCare').setData({
+  firestoreInstance.collection("users").document('Alisha').updateData({
     "name": nameController.text,
     "age": ageController.text,
     "date": dateController.text,

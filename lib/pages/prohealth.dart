@@ -174,7 +174,7 @@ class _ProhealthState extends State<Prohealth> {
 
 void createRecord() async {
   var firebaseUser = await FirebaseAuth.instance.currentUser();
-  firestoreInstance.collection("users").document('Prohealth').setData({
+  firestoreInstance.collection("users").document('Alisha').updateData({
     "name": nameController.text,
     "age": ageController.text,
     "date": dateController.text,

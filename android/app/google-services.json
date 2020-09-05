@@ -1,0 +1,114 @@
+{
+  "project_info": {
+    "project_number": "279824364329",
+    "firebase_url": "https://studyroom-b6626.firebaseio.com",
+    "project_id": "studyroom-b6626",
+    "storage_bucket": "studyroom-b6626.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:279824364329:android:a3be75910c637cc3f4bd38",
+        "android_client_info": {
+          "package_name": "com.example.agorarte"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "279824364329-9i51f2c3v61inmbfqvnt8mj6lcb2jb3m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.agorarte",
+            "certificate_hash": "71b609f9cc026c1e6fa960aeed32993774cef864"
+          }
+        },
+        {
+          "client_id": "279824364329-iah87icu62g2jir09qlc8lfhqtuh6uha.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYSk04dgVLt_d5ukPKeH1TI-yQoyDYpN8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "279824364329-iah87icu62g2jir09qlc8lfhqtuh6uha.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:279824364329:android:9310d8b44c5f33f3f4bd38",
+        "android_client_info": {
+          "package_name": "com.example.medhacks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "279824364329-7hvmvd5uo08gia2a66mj2kmtr6enojvp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.medhacks",
+            "certificate_hash": "d99da9f2692d4d5a8eb4626d1a9e78b7a0774db3"
+          }
+        },
+        {
+          "client_id": "279824364329-iah87icu62g2jir09qlc8lfhqtuh6uha.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYSk04dgVLt_d5ukPKeH1TI-yQoyDYpN8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "279824364329-iah87icu62g2jir09qlc8lfhqtuh6uha.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:279824364329:android:df5011ca3dc96f79f4bd38",
+        "android_client_info": {
+          "package_name": "study.room"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "279824364329-iah87icu62g2jir09qlc8lfhqtuh6uha.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYSk04dgVLt_d5ukPKeH1TI-yQoyDYpN8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "279824364329-iah87icu62g2jir09qlc8lfhqtuh6uha.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

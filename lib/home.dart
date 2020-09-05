@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:medhacks/mapmarker.dart';
+import 'homewidget.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -10,6 +11,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
+  String userEmail;
+  Future<void> getCurrentUserEmail() async {
+    final user =
+        await _auth.currentUser().then((value) => userEmail = value.email);
+    print(user);
+  }
+
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn = GoogleSignIn();
 
@@ -63,11 +71,12 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           onPressed: () {
+            getCurrentUserEmail();
             signInWithGoogle().whenComplete(() {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) {
-                    return MapMarker();
+                    return HomeWidget();
                   },
                 ),
               );

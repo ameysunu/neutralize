@@ -139,6 +139,112 @@ class _UserState extends State<User> {
                       _popUpDialog(context);
                     }),
               ),
+              Padding(
+                padding: const EdgeInsets.all(25.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 25),
+                      child: Text(
+                        "The below questions, will help you get immediate assistance, depending on your answers but however are not mandatory to answer.",
+                        style: TextStyle(
+                            color: Colors.white38,
+                            fontFamily: 'Poppins',
+                            fontSize: 12,
+                            fontStyle: FontStyle.italic),
+                      ),
+                    ),
+                    Text(
+                      "Mention any specific symptoms",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'Poppins',
+                          fontSize: 20),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                      child: TextFormField(
+                        style: TextStyle(
+                            color: Colors.white, fontFamily: 'Poppins'),
+                        decoration: new InputDecoration(
+                          enabledBorder: new OutlineInputBorder(
+                              borderSide: new BorderSide(color: Colors.white)),
+                          hintStyle: TextStyle(
+                            fontFamily: 'Poppins',
+                            color: Colors.white54,
+                            fontSize: 15,
+                            fontStyle: FontStyle.italic,
+                          ),
+                          labelStyle: TextStyle(
+                              fontFamily: 'Poppins', color: Colors.white),
+                          hintText: 'Headache, cough, cold etc.',
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10.0, 0, 0),
+                      child: Text(
+                        "Have you travelled outside the US within 14 days? If yes mention country(s).",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'Poppins',
+                            fontSize: 20),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                      child: TextFormField(
+                        style: TextStyle(
+                            color: Colors.white, fontFamily: 'Poppins'),
+                        decoration: new InputDecoration(
+                          enabledBorder: new OutlineInputBorder(
+                              borderSide: new BorderSide(color: Colors.white)),
+                          hintStyle: TextStyle(
+                            fontFamily: 'Poppins',
+                            color: Colors.white54,
+                            fontSize: 15,
+                            fontStyle: FontStyle.italic,
+                          ),
+                          labelStyle: TextStyle(
+                              fontFamily: 'Poppins', color: Colors.white),
+                          hintText: 'China, Israel, Italy etc.',
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10.0, 0, 0),
+                      child: Text(
+                        "Have you been in contact with anyone who has COVID-19? If yes, do mention your exposure. ",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'Poppins',
+                            fontSize: 20),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                      child: TextFormField(
+                        style: TextStyle(
+                            color: Colors.white, fontFamily: 'Poppins'),
+                        decoration: new InputDecoration(
+                          enabledBorder: new OutlineInputBorder(
+                              borderSide: new BorderSide(color: Colors.white)),
+                          hintStyle: TextStyle(
+                            fontFamily: 'Poppins',
+                            color: Colors.white54,
+                            fontSize: 15,
+                            fontStyle: FontStyle.italic,
+                          ),
+                          labelStyle: TextStyle(
+                              fontFamily: 'Poppins', color: Colors.white),
+                          hintText: 'Yes or No',
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

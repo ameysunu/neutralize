@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:medhacks/homewidget.dart';
 import 'pages/advantagecare.dart';
 
+final sympController = TextEditingController();
+final travelController = TextEditingController();
+final exposeController = TextEditingController();
+
 class User extends StatefulWidget {
   @override
   _UserState createState() => _UserState();
@@ -165,6 +169,7 @@ class _UserState extends State<User> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                       child: TextFormField(
+                        controller: sympController,
                         style: TextStyle(
                             color: Colors.white, fontFamily: 'Poppins'),
                         decoration: new InputDecoration(
@@ -195,6 +200,7 @@ class _UserState extends State<User> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                       child: TextFormField(
+                        controller: travelController,
                         style: TextStyle(
                             color: Colors.white, fontFamily: 'Poppins'),
                         decoration: new InputDecoration(
@@ -225,6 +231,7 @@ class _UserState extends State<User> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                       child: TextFormField(
+                        controller: exposeController,
                         style: TextStyle(
                             color: Colors.white, fontFamily: 'Poppins'),
                         decoration: new InputDecoration(
@@ -241,6 +248,25 @@ class _UserState extends State<User> {
                           hintText: 'Yes or No',
                         ),
                       ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10.0, 0, 5),
+                      child: RaisedButton(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Submit",
+                                style: TextStyle(
+                                    color: Colors.black, fontFamily: 'Poppins'),
+                              ),
+                            ],
+                          ),
+                          color: Colors.white,
+                          onPressed: () {
+                            newRecord();
+                            _submitDialog(context);
+                          }),
                     ),
                   ],
                 ),
@@ -282,6 +308,36 @@ void _popUpDialog(BuildContext context) {
       });
 }
 
+void _submitDialog(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Center(
+            child: Text(
+              "Submit responses?",
+              style: TextStyle(fontFamily: 'Poppins'),
+            ),
+          ),
+          content: RaisedButton(
+            color: Colors.black,
+            child: Row(
+              children: [
+                Text(
+                  "Submit",
+                  style: TextStyle(color: Colors.white, fontFamily: 'Poppins'),
+                ),
+              ],
+            ),
+            onPressed: () {
+              clearText();
+              Navigator.pop(context);
+            },
+          ),
+        );
+      });
+}
+
 void deleteRecord() async {
   var firebaseUser = await FirebaseAuth.instance.currentUser();
   firestoreInstance.collection("users").document('Alisha').updateData({
@@ -292,4 +348,21 @@ void deleteRecord() async {
   }).then((_) {
     print("success!");
   });
+}
+
+void newRecord() async {
+  var firebaseUser = await FirebaseAuth.instance.currentUser();
+  firestoreInstance.collection("users").document('Survey').updateData({
+    "symptoms": sympController.text,
+    "travel": travelController.text,
+    "exposure": exposeController.text,
+  }).then((_) {
+    print("success!");
+  });
+}
+
+clearText() {
+  sympController.clear();
+  travelController.clear();
+  exposeController.clear();
 }

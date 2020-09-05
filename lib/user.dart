@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:medhacks/homewidget.dart';
+import 'package:medhacks/symptoms.dart';
 import 'pages/advantagecare.dart';
 
 final sympController = TextEditingController();
@@ -44,6 +45,21 @@ class _UserState extends State<User> {
             "Neutralize",
             style: TextStyle(fontFamily: 'Poppins'),
           ),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(
+                Icons.lightbulb,
+                color: Colors.white,
+              ),
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return Symptom();
+                  },
+                ),
+              ),
+            ),
+          ],
         ),
         body: SingleChildScrollView(
           child: Column(

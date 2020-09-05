@@ -2,6 +2,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:medhacks/pages/advantagecare.dart';
 import 'package:medhacks/pages/elmhurst.dart';
+import 'package:medhacks/pages/floating.dart';
+import 'package:medhacks/pages/northwell.dart';
 import 'package:medhacks/pages/prohealth.dart';
 import 'dart:async';
 import 'package:url_launcher/url_launcher.dart';
@@ -582,13 +584,11 @@ void _popupDialogFive(BuildContext context) {
                                     color: Colors.black, fontFamily: 'Poppins'),
                               ),
                               onPressed: () async {
-                                const url =
-                                    'https://www.citymd.com/urgent-care-locations/ny/manhattan/delancey/031';
-                                if (await canLaunch(url)) {
-                                  await launch(url);
-                                } else {
-                                  throw 'Could not launch $url';
-                                }
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Northwell()),
+                                );
                               }),
                         ),
                       ],
@@ -671,13 +671,11 @@ void _popupDialogSix(BuildContext context) {
                                     color: Colors.black, fontFamily: 'Poppins'),
                               ),
                               onPressed: () async {
-                                const url =
-                                    'https://www.citymd.com/urgent-care-locations/ny/manhattan/delancey/031';
-                                if (await canLaunch(url)) {
-                                  await launch(url);
-                                } else {
-                                  throw 'Could not launch $url';
-                                }
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Floating()),
+                                );
                               }),
                         ),
                       ],

@@ -16,18 +16,10 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 ## Features
-<img src= "screenshots/first.png" width="360" height="720" > 
-
-<img src= "screenshots/second.png" width="360" height="720" > 
+<img src= "screenshots/first.png" width="360" height="720" > <img src= "screenshots/second.png" width="360" height="720" > 
  
-<img src= "screenshots/third.png" width="360" height="720" > 
+<img src= "screenshots/third.png" width="360" height="720" > <img src= "screenshots/fourth.png" width="360" height="720" > 
 
-<img src= "screenshots/fourth.png" width="360" height="720" > 
+<img src= "screenshots/fifth.png" width="360" height="720" > <img src= "screenshots/sixth.png" width="360" height="720" > 
 
-<img src= "screenshots/fifth.png" width="360" height="720" > 
-
-<img src= "screenshots/sixth.png" width="360" height="720" > 
-
-<img src= "screenshots/seventh.png" width="360" height="720" > 
-
-<img src= "screenshots/eight.png" width="360" height="720" > 
+<img src= "screenshots/seventh.png" width="360" height="720" > <img src= "screenshots/eight.png" width="360" height="720" > 

@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:medhacks/pages/advantagecare.dart';
 import 'package:medhacks/pages/elmhurst.dart';
 import 'package:medhacks/pages/floating.dart';
@@ -8,6 +10,15 @@ import 'package:medhacks/pages/prohealth.dart';
 import 'dart:async';
 import 'package:url_launcher/url_launcher.dart';
 import 'pages/citymd.dart';
+import 'home.dart';
+
+final FirebaseAuth _auth = FirebaseAuth.instance;
+final GoogleSignIn googleSignIn = GoogleSignIn();
+Future<String> signOutGoogle() async {
+  await googleSignIn.signOut();
+
+  print("User Sign Out");
+}
 
 class MapMarker extends StatefulWidget {
   @override
@@ -64,6 +75,23 @@ class _MapMarkerState extends State<MapMarker> {
             "Neutralize",
             style: TextStyle(fontFamily: 'Poppins'),
           ),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(
+                Icons.logout,
+                color: Colors.white,
+              ),
+              onPressed: () => signOutGoogle().whenComplete(() {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return HomePage();
+                    },
+                  ),
+                );
+              }),
+            ),
+          ],
         ),
         body: GoogleMap(
           mapType: _currentMapType,

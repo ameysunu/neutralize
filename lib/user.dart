@@ -38,6 +38,7 @@ class _UserState extends State<User> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        resizeToAvoidBottomPadding: false,
         backgroundColor: Colors.black,
         appBar: AppBar(
           backgroundColor: Colors.black,
@@ -62,232 +63,242 @@ class _UserState extends State<User> {
           ],
         ),
         body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
-                    child: Container(
-                      height: 80,
-                      width: 80,
-                      child: CircleAvatar(
-                          backgroundColor: Colors.white54,
-                          child: Image.network("${user?.photoUrl}")),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "${user?.displayName}",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'Poppins',
-                              fontSize: 18),
-                        ),
-                        Text(
-                          "${user?.email}",
-                          style: TextStyle(
-                              color: Colors.white, fontFamily: 'Poppins'),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.all(25.0),
-                child: Text(
-                  "My Bookings",
-                  style: TextStyle(
-                      color: Colors.white, fontFamily: 'Poppins', fontSize: 20),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: InkWell(
-                    child: Card(
-                      color: Colors.grey[700],
-                      child: FutureBuilder(
-                        future: getUserInfo(),
-                        builder: (context,
-                            AsyncSnapshot<DocumentSnapshot> snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.done) {
-                            return ListView.builder(
-                                shrinkWrap: true,
-                                itemCount: 1,
-                                itemBuilder: (BuildContext context, int index) {
-                                  return Padding(
-                                    padding: const EdgeInsets.fromLTRB(
-                                        10, 10, 20, 10),
-                                    child: Column(
-                                      children: [
-                                        ListTile(
-                                          title: Text(
-                                            "Name: " +
-                                                snapshot.data.data["name"] +
-                                                "\nHospital: " +
-                                                snapshot.data.data["hospital"] +
-                                                "\nBooking Date: " +
-                                                snapshot.data.data["date"] +
-                                                "\nTime: " +
-                                                snapshot.data.data["time"],
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: 'Poppins',
-                                                fontSize: 15),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                });
-                          } else if (snapshot.connectionState ==
-                              ConnectionState.none) {
-                            return Text("No data");
-                          }
-                          return CircularProgressIndicator();
-                        },
-                      ),
-                    ),
-                    onTap: () {
-                      _popUpDialog(context);
-                    }),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(25.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+          child: SizedBox(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 25),
-                      child: Text(
-                        "The below questions, will help you get immediate assistance, depending on your answers but however are not mandatory to answer.",
-                        style: TextStyle(
-                            color: Colors.white38,
-                            fontFamily: 'Poppins',
-                            fontSize: 12,
-                            fontStyle: FontStyle.italic),
+                      padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
+                      child: Container(
+                        height: 80,
+                        width: 80,
+                        child: CircleAvatar(
+                            backgroundColor: Colors.white54,
+                            child: Image.network("${user?.photoUrl}")),
                       ),
                     ),
-                    Text(
-                      "Mention any specific symptoms",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'Poppins',
-                          fontSize: 20),
-                    ),
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      child: TextFormField(
-                        controller: sympController,
-                        style: TextStyle(
-                            color: Colors.white, fontFamily: 'Poppins'),
-                        decoration: new InputDecoration(
-                          enabledBorder: new OutlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white)),
-                          hintStyle: TextStyle(
-                            fontFamily: 'Poppins',
-                            color: Colors.white54,
-                            fontSize: 15,
-                            fontStyle: FontStyle.italic,
+                      padding: const EdgeInsets.all(20.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "${user?.displayName}",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: 'Poppins',
+                                fontSize: 18),
                           ),
-                          labelStyle: TextStyle(
-                              fontFamily: 'Poppins', color: Colors.white),
-                          hintText: 'Headache, cough, cold etc.',
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 10.0, 0, 0),
-                      child: Text(
-                        "Have you travelled outside the US within 14 days? If yes mention country(s).",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'Poppins',
-                            fontSize: 20),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      child: TextFormField(
-                        controller: travelController,
-                        style: TextStyle(
-                            color: Colors.white, fontFamily: 'Poppins'),
-                        decoration: new InputDecoration(
-                          enabledBorder: new OutlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white)),
-                          hintStyle: TextStyle(
-                            fontFamily: 'Poppins',
-                            color: Colors.white54,
-                            fontSize: 15,
-                            fontStyle: FontStyle.italic,
+                          Text(
+                            "${user?.email}",
+                            style: TextStyle(
+                                color: Colors.white, fontFamily: 'Poppins'),
                           ),
-                          labelStyle: TextStyle(
-                              fontFamily: 'Poppins', color: Colors.white),
-                          hintText: 'China, Israel, Italy etc.',
-                        ),
+                        ],
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 10.0, 0, 0),
-                      child: Text(
-                        "Have you been in contact with anyone who has COVID-19? If yes, do mention your exposure. ",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'Poppins',
-                            fontSize: 20),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      child: TextFormField(
-                        controller: exposeController,
-                        style: TextStyle(
-                            color: Colors.white, fontFamily: 'Poppins'),
-                        decoration: new InputDecoration(
-                          enabledBorder: new OutlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white)),
-                          hintStyle: TextStyle(
-                            fontFamily: 'Poppins',
-                            color: Colors.white54,
-                            fontSize: 15,
-                            fontStyle: FontStyle.italic,
-                          ),
-                          labelStyle: TextStyle(
-                              fontFamily: 'Poppins', color: Colors.white),
-                          hintText: 'Yes or No',
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 10.0, 0, 5),
-                      child: RaisedButton(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Submit",
-                                style: TextStyle(
-                                    color: Colors.black, fontFamily: 'Poppins'),
-                              ),
-                            ],
-                          ),
-                          color: Colors.white,
-                          onPressed: () {
-                            newRecord();
-                            _submitDialog(context);
-                          }),
                     ),
                   ],
                 ),
-              ),
-            ],
+                Padding(
+                  padding: const EdgeInsets.all(25.0),
+                  child: Text(
+                    "My Bookings",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'Poppins',
+                        fontSize: 20),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: InkWell(
+                      child: Card(
+                        color: Colors.grey[700],
+                        child: FutureBuilder(
+                          future: getUserInfo(),
+                          builder: (context,
+                              AsyncSnapshot<DocumentSnapshot> snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.done) {
+                              return ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: 1,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          10, 10, 20, 10),
+                                      child: Column(
+                                        children: [
+                                          ListTile(
+                                            title: Text(
+                                              "Name: " +
+                                                  snapshot.data.data["name"] +
+                                                  "\nHospital: " +
+                                                  snapshot
+                                                      .data.data["hospital"] +
+                                                  "\nBooking Date: " +
+                                                  snapshot.data.data["date"] +
+                                                  "\nTime: " +
+                                                  snapshot.data.data["time"],
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontFamily: 'Poppins',
+                                                  fontSize: 15),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  });
+                            } else if (snapshot.connectionState ==
+                                ConnectionState.none) {
+                              return Text("No data");
+                            }
+                            return CircularProgressIndicator();
+                          },
+                        ),
+                      ),
+                      onTap: () {
+                        _popUpDialog(context);
+                      }),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(25.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 0, 0, 25),
+                        child: Text(
+                          "The below questions, will help you get immediate assistance, depending on your answers but however are not mandatory to answer.",
+                          style: TextStyle(
+                              color: Colors.white38,
+                              fontFamily: 'Poppins',
+                              fontSize: 12,
+                              fontStyle: FontStyle.italic),
+                        ),
+                      ),
+                      Text(
+                        "Mention any specific symptoms",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'Poppins',
+                            fontSize: 20),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                        child: TextFormField(
+                          controller: sympController,
+                          style: TextStyle(
+                              color: Colors.white, fontFamily: 'Poppins'),
+                          decoration: new InputDecoration(
+                            enabledBorder: new OutlineInputBorder(
+                                borderSide:
+                                    new BorderSide(color: Colors.white)),
+                            hintStyle: TextStyle(
+                              fontFamily: 'Poppins',
+                              color: Colors.white54,
+                              fontSize: 15,
+                              fontStyle: FontStyle.italic,
+                            ),
+                            labelStyle: TextStyle(
+                                fontFamily: 'Poppins', color: Colors.white),
+                            hintText: 'Headache, cough, cold etc.',
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 10.0, 0, 0),
+                        child: Text(
+                          "Have you travelled outside the US within 14 days? If yes mention country(s).",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'Poppins',
+                              fontSize: 20),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                        child: TextFormField(
+                          controller: travelController,
+                          style: TextStyle(
+                              color: Colors.white, fontFamily: 'Poppins'),
+                          decoration: new InputDecoration(
+                            enabledBorder: new OutlineInputBorder(
+                                borderSide:
+                                    new BorderSide(color: Colors.white)),
+                            hintStyle: TextStyle(
+                              fontFamily: 'Poppins',
+                              color: Colors.white54,
+                              fontSize: 15,
+                              fontStyle: FontStyle.italic,
+                            ),
+                            labelStyle: TextStyle(
+                                fontFamily: 'Poppins', color: Colors.white),
+                            hintText: 'China, Israel, Italy etc.',
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 10.0, 0, 0),
+                        child: Text(
+                          "Have you been in contact with anyone who has COVID-19? If yes, do mention your exposure. ",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'Poppins',
+                              fontSize: 20),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                        child: TextFormField(
+                          controller: exposeController,
+                          style: TextStyle(
+                              color: Colors.white, fontFamily: 'Poppins'),
+                          decoration: new InputDecoration(
+                            enabledBorder: new OutlineInputBorder(
+                                borderSide:
+                                    new BorderSide(color: Colors.white)),
+                            hintStyle: TextStyle(
+                              fontFamily: 'Poppins',
+                              color: Colors.white54,
+                              fontSize: 15,
+                              fontStyle: FontStyle.italic,
+                            ),
+                            labelStyle: TextStyle(
+                                fontFamily: 'Poppins', color: Colors.white),
+                            hintText: 'Yes or No',
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 10.0, 0, 5),
+                        child: RaisedButton(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Submit",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontFamily: 'Poppins'),
+                                ),
+                              ],
+                            ),
+                            color: Colors.white,
+                            onPressed: () {
+                              newRecord();
+                              _submitDialog(context);
+                            }),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

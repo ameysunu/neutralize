@@ -1,6 +1,6 @@
-# medhacks
+# Neutralize
 
-A new Flutter project.
+Visit your nearest COVID centers, by booking an appointment so that you wouldn't have to stand in queues, which would help social distancing a lot and risk of exposure to the virus. Add your symptoms, if you have any so that the hospitals can come up with a sooner date and time slot depending on your symptom.
 
 ## Getting Started
 

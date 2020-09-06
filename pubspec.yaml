@@ -31,6 +31,7 @@ dependencies:
   cloud_firestore: ^0.13.4+2
   flutter_webview_plugin: ^0.3.10+1
   introduction_screen: ^1.0.7
+  flutter_polyline_points: ^0.1.0
   
 
 

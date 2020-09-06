@@ -30,6 +30,7 @@ dependencies:
   firebase_database:
   cloud_firestore: ^0.13.4+2
   flutter_webview_plugin: ^0.3.10+1
+  introduction_screen: ^1.0.7
   
 
 
@@ -63,6 +64,10 @@ flutter:
     - images/advantagecare.png
     - images/northwell.jpeg
     - images/floating.jpg
+    - images/introduction/first.png
+    - images/introduction/second.png
+    - images/introduction/third.png
+    - images/introduction/fourth.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

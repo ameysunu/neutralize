@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:medhacks/mapmarker.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'homewidget.dart';
 
 class HomePage extends StatefulWidget {
@@ -125,6 +126,24 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               _signIn(),
+              Center(
+                child: InkWell(
+                  child: Text(
+                    "Have any problems logging in? Do let us know.",
+                    style:
+                        TextStyle(fontFamily: 'Poppins', color: Colors.white),
+                  ),
+                  onTap: () async {
+                    const url =
+                        'https://www.github.com/ameysunu/neutralize/issues';
+                    if (await canLaunch(url)) {
+                      await launch(url);
+                    } else {
+                      throw 'Could not launch $url';
+                    }
+                  },
+                ),
+              ),
             ],
           ),
         ),
